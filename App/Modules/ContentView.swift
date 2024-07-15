@@ -41,16 +41,6 @@ private extension ContentView {
                     Label("Home", systemImage: "house")
                 }
 
-            NotesView()
-                .tabItem {
-                    Label("Notes", systemImage: "note.text")
-                }
-
-            TodoView()
-                .tabItem {
-                    Label("Todo", systemImage: "checkmark.circle")
-                }
-            
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")

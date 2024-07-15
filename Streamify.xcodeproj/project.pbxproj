@@ -8,14 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		074643F52C44BD0C005B151A /* StreamifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074643F42C44BD0C005B151A /* StreamifyApp.swift */; };
-		074644212C44BE65005B151A /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644022C44BE65005B151A /* NoteDetailView.swift */; };
-		074644222C44BE65005B151A /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644032C44BE65005B151A /* NotesModel.swift */; };
-		074644232C44BE65005B151A /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644042C44BE65005B151A /* NotesView.swift */; };
-		074644242C44BE65005B151A /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644062C44BE65005B151A /* TodoModel.swift */; };
-		074644252C44BE65005B151A /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644072C44BE65005B151A /* TodoView.swift */; };
-		074644262C44BE65005B151A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644092C44BE65005B151A /* SearchBar.swift */; };
-		074644272C44BE65005B151A /* CitizenshipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746440B2C44BE65005B151A /* CitizenshipModel.swift */; };
-		074644282C44BE65005B151A /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746440C2C44BE65005B151A /* CountryDetailView.swift */; };
 		074644292C44BE65005B151A /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746440D2C44BE65005B151A /* HomeModel.swift */; };
 		0746442A2C44BE65005B151A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746440E2C44BE65005B151A /* HomeView.swift */; };
 		0746442B2C44BE65005B151A /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644102C44BE65005B151A /* SignInModel.swift */; };
@@ -37,14 +29,6 @@
 /* Begin PBXFileReference section */
 		074643F12C44BD0C005B151A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		074643F42C44BD0C005B151A /* StreamifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyApp.swift; sourceTree = "<group>"; };
-		074644022C44BE65005B151A /* NoteDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
-		074644032C44BE65005B151A /* NotesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesModel.swift; sourceTree = "<group>"; };
-		074644042C44BE65005B151A /* NotesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
-		074644062C44BE65005B151A /* TodoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
-		074644072C44BE65005B151A /* TodoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
-		074644092C44BE65005B151A /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		0746440B2C44BE65005B151A /* CitizenshipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitizenshipModel.swift; sourceTree = "<group>"; };
-		0746440C2C44BE65005B151A /* CountryDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
 		0746440D2C44BE65005B151A /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		0746440E2C44BE65005B151A /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		074644102C44BE65005B151A /* SignInModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
@@ -100,40 +84,9 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		074644052C44BE65005B151A /* Notes */ = {
-			isa = PBXGroup;
-			children = (
-				074644022C44BE65005B151A /* NoteDetailView.swift */,
-				074644032C44BE65005B151A /* NotesModel.swift */,
-				074644042C44BE65005B151A /* NotesView.swift */,
-			);
-			path = Notes;
-			sourceTree = "<group>";
-		};
-		074644082C44BE65005B151A /* Todo */ = {
-			isa = PBXGroup;
-			children = (
-				074644062C44BE65005B151A /* TodoModel.swift */,
-				074644072C44BE65005B151A /* TodoView.swift */,
-			);
-			path = Todo;
-			sourceTree = "<group>";
-		};
-		0746440A2C44BE65005B151A /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				074644052C44BE65005B151A /* Notes */,
-				074644082C44BE65005B151A /* Todo */,
-				074644092C44BE65005B151A /* SearchBar.swift */,
-			);
-			path = Features;
-			sourceTree = "<group>";
-		};
 		0746440F2C44BE65005B151A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				0746440B2C44BE65005B151A /* CitizenshipModel.swift */,
-				0746440C2C44BE65005B151A /* CountryDetailView.swift */,
 				0746440D2C44BE65005B151A /* HomeModel.swift */,
 				0746440E2C44BE65005B151A /* HomeView.swift */,
 			);
@@ -195,7 +148,6 @@
 				0746441F2C44BE65005B151A /* ContentView.swift */,
 				074644152C44BE65005B151A /* Onboard */,
 				0746440F2C44BE65005B151A /* Home */,
-				0746440A2C44BE65005B151A /* Features */,
 				0746441E2C44BE65005B151A /* Settings */,
 				0746443C2C44BF33005B151A /* Assets */,
 			);
@@ -291,23 +243,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				074644312C44BE65005B151A /* AccountModel.swift in Sources */,
-				074644212C44BE65005B151A /* NoteDetailView.swift in Sources */,
 				0746442D2C44BE65005B151A /* OnboardModel.swift in Sources */,
-				074644222C44BE65005B151A /* NotesModel.swift in Sources */,
 				074644322C44BE65005B151A /* AccountView.swift in Sources */,
 				074644292C44BE65005B151A /* HomeModel.swift in Sources */,
 				0746443F2C44BF33005B151A /* Constants.swift in Sources */,
-				074644252C44BE65005B151A /* TodoView.swift in Sources */,
 				0746442F2C44BE65005B151A /* DeletionModel.swift in Sources */,
 				074644302C44BE65005B151A /* DeletionView.swift in Sources */,
-				074644232C44BE65005B151A /* NotesView.swift in Sources */,
-				074644282C44BE65005B151A /* CountryDetailView.swift in Sources */,
-				074644242C44BE65005B151A /* TodoModel.swift in Sources */,
 				074644332C44BE65005B151A /* SettingsModel.swift in Sources */,
 				0746442B2C44BE65005B151A /* SignInModel.swift in Sources */,
 				0746442C2C44BE65005B151A /* SignInView.swift in Sources */,
-				074644272C44BE65005B151A /* CitizenshipModel.swift in Sources */,
-				074644262C44BE65005B151A /* SearchBar.swift in Sources */,
 				074644352C44BE65005B151A /* ContentView.swift in Sources */,
 				0746442E2C44BE65005B151A /* OnboardView.swift in Sources */,
 				0746442A2C44BE65005B151A /* HomeView.swift in Sources */,

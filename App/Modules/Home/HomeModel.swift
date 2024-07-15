@@ -15,10 +15,10 @@ func getGreeting(for userName: String?) -> String {
     
     switch hour {
     case 6..<12:
-        return "Good Morning \(name)"
+        return "Good morning, \(name)"
     case 12..<18:
-        return "Good Afternoon \(name)"
+        return "Good afternoon, \(name)"
     default:
-        return "Good Evening \(name)"
+        return "Good evening, \(name)"
     }
 }
