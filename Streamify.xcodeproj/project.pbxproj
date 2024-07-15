@@ -29,6 +29,11 @@
 		0746444A2C44D874005B151A /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644492C44D874005B151A /* SearchModel.swift */; };
 		0746444F2C44DCE7005B151A /* SettingsSubTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746444E2C44DCE7005B151A /* SettingsSubTabs.swift */; };
 		074644512C44E720005B151A /* FeedbackSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644502C44E720005B151A /* FeedbackSupport.swift */; };
+		074644542C44F1A2005B151A /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 074644532C44F1A2005B151A /* GoogleMobileAds */; };
+		074644582C44F448005B151A /* AdMobModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644572C44F448005B151A /* AdMobModel.swift */; };
+		0746445A2C44F6DB005B151A /* GADNativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644592C44F6DB005B151A /* GADNativeViewController.swift */; };
+		0746445C2C44F6EF005B151A /* GADNativeViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746445B2C44F6EF005B151A /* GADNativeViewWrapper.swift */; };
+		074644602C44F942005B151A /* Streamify-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0746445F2C44F942005B151A /* Streamify-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +61,10 @@
 		074644492C44D874005B151A /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		0746444E2C44DCE7005B151A /* SettingsSubTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubTabs.swift; sourceTree = "<group>"; };
 		074644502C44E720005B151A /* FeedbackSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSupport.swift; sourceTree = "<group>"; };
+		074644572C44F448005B151A /* AdMobModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobModel.swift; sourceTree = "<group>"; };
+		074644592C44F6DB005B151A /* GADNativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADNativeViewController.swift; sourceTree = "<group>"; };
+		0746445B2C44F6EF005B151A /* GADNativeViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADNativeViewWrapper.swift; sourceTree = "<group>"; };
+		0746445F2C44F942005B151A /* Streamify-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Streamify-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074644542C44F1A2005B151A /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +82,7 @@
 		074643E82C44BD0C005B151A = {
 			isa = PBXGroup;
 			children = (
+				0746445F2C44F942005B151A /* Streamify-Info.plist */,
 				074644402C44C123005B151A /* Streamify.entitlements */,
 				074643F32C44BD0C005B151A /* App */,
 				074643F22C44BD0C005B151A /* Products */,
@@ -163,6 +174,7 @@
 				0746440F2C44BE65005B151A /* Home */,
 				0746441E2C44BE65005B151A /* Settings */,
 				0746443C2C44BF33005B151A /* Assets */,
+				074644562C44F435005B151A /* Ads */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -203,6 +215,16 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
+		074644562C44F435005B151A /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				074644572C44F448005B151A /* AdMobModel.swift */,
+				074644592C44F6DB005B151A /* GADNativeViewController.swift */,
+				0746445B2C44F6EF005B151A /* GADNativeViewWrapper.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +241,9 @@
 			dependencies = (
 			);
 			name = Streamify;
+			packageProductDependencies = (
+				074644532C44F1A2005B151A /* GoogleMobileAds */,
+			);
 			productName = Streamify;
 			productReference = 074643F12C44BD0C005B151A /* Streamify.app */;
 			productType = "com.apple.product-type.application";
@@ -247,6 +272,9 @@
 				Base,
 			);
 			mainGroup = 074643E82C44BD0C005B151A;
+			packageReferences = (
+				074644522C44F1A1005B151A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = 074643F22C44BD0C005B151A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +291,7 @@
 			files = (
 				0746443D2C44BF33005B151A /* Preview Assets.xcassets in Resources */,
 				0746443E2C44BF33005B151A /* Assets.xcassets in Resources */,
+				074644602C44F942005B151A /* Streamify-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +304,7 @@
 			files = (
 				074644482C44D6E5005B151A /* SearchView.swift in Sources */,
 				0746442D2C44BE65005B151A /* OnboardModel.swift in Sources */,
+				0746445A2C44F6DB005B151A /* GADNativeViewController.swift in Sources */,
 				074644512C44E720005B151A /* FeedbackSupport.swift in Sources */,
 				0746444A2C44D874005B151A /* SearchModel.swift in Sources */,
 				0746444F2C44DCE7005B151A /* SettingsSubTabs.swift in Sources */,
@@ -284,6 +314,7 @@
 				0746443F2C44BF33005B151A /* Constants.swift in Sources */,
 				0746442F2C44BE65005B151A /* DeletionModel.swift in Sources */,
 				074644302C44BE65005B151A /* DeletionView.swift in Sources */,
+				074644582C44F448005B151A /* AdMobModel.swift in Sources */,
 				074644332C44BE65005B151A /* SettingsModel.swift in Sources */,
 				0746442B2C44BE65005B151A /* SignInModel.swift in Sources */,
 				0746442C2C44BE65005B151A /* SignInView.swift in Sources */,
@@ -292,6 +323,7 @@
 				0746442A2C44BE65005B151A /* HomeView.swift in Sources */,
 				074643F52C44BD0C005B151A /* StreamifyApp.swift in Sources */,
 				074644442C44D33D005B151A /* PlaylistView.swift in Sources */,
+				0746445C2C44F6EF005B151A /* GADNativeViewWrapper.swift in Sources */,
 				074644342C44BE65005B151A /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,8 +461,10 @@
 				DEVELOPMENT_TEAM = Q5F3QY59N9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Streamify;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_FILE = "Streamify-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -464,8 +498,10 @@
 				DEVELOPMENT_TEAM = Q5F3QY59N9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Streamify;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_FILE = "Streamify-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -510,6 +546,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		074644522C44F1A1005B151A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		074644532C44F1A2005B151A /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 074644522C44F1A1005B151A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 074643E92C44BD0C005B151A /* Project object */;
 }

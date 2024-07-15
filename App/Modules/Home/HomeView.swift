@@ -25,7 +25,7 @@ private extension HomeView {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    
+                    BannerView()
                 }.navigationTitle(getGreeting(for: signInViewModel.userName))
             }
         }
