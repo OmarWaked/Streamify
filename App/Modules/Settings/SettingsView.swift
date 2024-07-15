@@ -7,9 +7,13 @@
 
 // MARK: - Import
 import SwiftUI
+import MessageUI
 
 // MARK: - View
 struct SettingsView: View {
+    @State private var isShowingMailView = false
+    @State private var result: Result<MFMailComposeResult, Error>? = nil
+    
     var body: some View {
         VStack {
             content
@@ -22,20 +26,6 @@ private extension SettingsView {
     var content: some View {
         NavigationView {
             List {
-                Section(header: Text("DATA MANAGEMENT")) {
-                    NavigationLink(destination: BackupRecoverTransferView()) {
-                        HStack {
-                            Image(systemName: "arrow.2.circlepath.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(.yellow)
-                            Text("Backup, Recover, and Transfer")
-                                .font(.system(size: 18))
-                        }
-                    }
-                }
-                
                 Section(header: Text("ACCOUNT")) {
                     NavigationLink(destination: AccountView()) {
                         HStack {
@@ -45,6 +35,20 @@ private extension SettingsView {
                                 .frame(width: 24, height: 24)
                                 .foregroundColor(.blue)
                             Text("Account")
+                                .font(.system(size: 18))
+                        }
+                    }
+                }
+                
+                Section(header: Text("DATA MANAGEMENT")) {
+                    NavigationLink(destination: BackupRecoverTransferView()) {
+                        HStack {
+                            Image(systemName: "arrow.2.circlepath.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(.yellow)
+                            Text("Backup, Recover, and Transfer")
                                 .font(.system(size: 18))
                         }
                     }
@@ -63,34 +67,34 @@ private extension SettingsView {
                         }
                     }
                 }
-                
-                Section(header: Text("AUDIO")) {
-                    NavigationLink(destination: SleepTimerView()) {
-                        HStack {
-                            Image(systemName: "moon.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(.pink)
-                            Text("Sleep Timer")
-                                .font(.system(size: 18))
-                        }
-                    }
-                }
-                
-                Section(header: Text("YOUTUBE")) {
-                    NavigationLink(destination: YouTubeLoginView()) {
-                        HStack {
-                            Image(systemName: "play.rectangle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(.red)
-                            Text("YouTube Login")
-                                .font(.system(size: 18))
-                        }
-                    }
-                }
+//                
+//                Section(header: Text("AUDIO")) {
+//                    NavigationLink(destination: SleepTimerView()) {
+//                        HStack {
+//                            Image(systemName: "moon.circle")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 24, height: 24)
+//                                .foregroundColor(.pink)
+//                            Text("Sleep Timer")
+//                                .font(.system(size: 18))
+//                        }
+//                    }
+//                }
+//                
+//                Section(header: Text("YOUTUBE")) {
+//                    NavigationLink(destination: YouTubeLoginView()) {
+//                        HStack {
+//                            Image(systemName: "play.rectangle")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 24, height: 24)
+//                                .foregroundColor(.red)
+//                            Text("YouTube Login")
+//                                .font(.system(size: 18))
+//                        }
+//                    }
+//                }
                 
                 Section(header: Text("SUPPORT")) {
                     NavigationLink(destination: HelpSupportView()) {
@@ -104,16 +108,30 @@ private extension SettingsView {
                                 .font(.system(size: 18))
                         }
                     }
-                    NavigationLink(destination: SendFeedbackView()) {
-                        HStack {
-                            Image(systemName: "paperplane.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(.orange)
-                            Text("Send Feedback")
-                                .font(.system(size: 18))
-                        }
+                    Button(action: {
+                       if MFMailComposeViewController.canSendMail() {
+                           self.isShowingMailView = true
+                       } else {
+                           // Show an alert if the device is unable to send email
+                           // You can also provide alternative options here
+                       }
+                   }) {
+                       HStack {
+                           Image(systemName: "paperplane.circle")
+                               .resizable()
+                               .scaledToFit()
+                               .frame(width: 24, height: 24)
+                               .foregroundColor(.orange)
+                           Text("Send Feedback")
+                               .font(.system(size: 18))
+                               .foregroundColor(.primary)
+                           Spacer()
+                           Image(systemName: "chevron.right")
+                               .foregroundColor(.gray)
+                       }
+                    }
+                    .sheet(isPresented: $isShowingMailView) {
+                        MailView(isShowing: self.$isShowingMailView, result: self.$result)
                     }
                     NavigationLink(destination: FAQView()) {
                         HStack {

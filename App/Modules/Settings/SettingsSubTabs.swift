@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MessageUI
 
 struct AccountView: View {
     var body: some View {
@@ -25,14 +26,6 @@ struct HelpSupportView: View {
     }
 }
 
-struct SendFeedbackView: View {
-    var body: some View {
-        Text("Send Feedback")
-            .font(.title2)
-            .navigationTitle("Send Feedback")
-            .navigationBarTitleDisplayMode(.inline)
-    }
-}
 
 struct FAQView: View {
     var body: some View {
@@ -72,9 +65,59 @@ struct BackupRecoverTransferView: View {
 
 struct RemoveAdsView: View {
     var body: some View {
-        Text("Remove Ads")
-            .font(.title2)
-            .navigationTitle("Remove Ads")
-            .navigationBarTitleDisplayMode(.inline)
+        ScrollView {
+            VStack(spacing: 20) {
+                Button(action: {
+                    // Add functionality to remove ads forever
+                }) {
+                    Text("Remove Ads Forever")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.Tangerine)
+                        .cornerRadius(10)
+                }
+                
+                Button(action: {
+                    // Add functionality to remove ads for 1 year
+                }) {
+                    Text("Remove Ads for 1 Year")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.Tangerine)
+                        .cornerRadius(10)
+                }
+                
+                Button(action: {
+                    // Add functionality to refer 5 friends
+                }) {
+                    Text("Refer 5 Friends to Get Ads Free")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.Tangerine)
+                        .cornerRadius(10)
+                }
+                
+                Button(action: {
+                    // Add functionality to recover purchase
+                }) {
+                    Text("Recover Purchase")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.Tangerine)
+                        .cornerRadius(10)
+                }
+            }
+            .padding()
+        }
+        .navigationTitle("Remove Ads")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
