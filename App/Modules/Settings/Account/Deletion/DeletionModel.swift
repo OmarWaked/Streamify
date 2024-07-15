@@ -1,8 +1,8 @@
 //
 //  DeletionModel.swift
-//  App
+//  Streamify
 //
-//  Created by Rayan Waked on 7/14/24.
+//  Created by Omar Waked on 7/14/24.
 //
 
 // MARK: - Import

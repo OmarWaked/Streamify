@@ -16,14 +16,18 @@
 		0746442E2C44BE65005B151A /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644142C44BE65005B151A /* OnboardView.swift */; };
 		0746442F2C44BE65005B151A /* DeletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644162C44BE65005B151A /* DeletionModel.swift */; };
 		074644302C44BE65005B151A /* DeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644172C44BE65005B151A /* DeletionView.swift */; };
-		074644312C44BE65005B151A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644192C44BE65005B151A /* AccountModel.swift */; };
-		074644322C44BE65005B151A /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746441A2C44BE65005B151A /* AccountView.swift */; };
 		074644332C44BE65005B151A /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746441C2C44BE65005B151A /* SettingsModel.swift */; };
 		074644342C44BE65005B151A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746441D2C44BE65005B151A /* SettingsView.swift */; };
 		074644352C44BE65005B151A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746441F2C44BE65005B151A /* ContentView.swift */; };
 		0746443D2C44BF33005B151A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074644382C44BF33005B151A /* Preview Assets.xcassets */; };
 		0746443E2C44BF33005B151A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0746443A2C44BF33005B151A /* Assets.xcassets */; };
 		0746443F2C44BF33005B151A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746443B2C44BF33005B151A /* Constants.swift */; };
+		074644422C44D2BF005B151A /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644412C44D2BF005B151A /* VideoModel.swift */; };
+		074644442C44D33D005B151A /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644432C44D33D005B151A /* PlaylistView.swift */; };
+		074644462C44D4E4005B151A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644452C44D4E4005B151A /* SearchBar.swift */; };
+		074644482C44D6E5005B151A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644472C44D6E5005B151A /* SearchView.swift */; };
+		0746444A2C44D874005B151A /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644492C44D874005B151A /* SearchModel.swift */; };
+		0746444F2C44DCE7005B151A /* SettingsSubTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746444E2C44DCE7005B151A /* SettingsSubTabs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +41,6 @@
 		074644142C44BE65005B151A /* OnboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		074644162C44BE65005B151A /* DeletionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletionModel.swift; sourceTree = "<group>"; };
 		074644172C44BE65005B151A /* DeletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletionView.swift; sourceTree = "<group>"; };
-		074644192C44BE65005B151A /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
-		0746441A2C44BE65005B151A /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		0746441C2C44BE65005B151A /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		0746441D2C44BE65005B151A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0746441F2C44BE65005B151A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,12 @@
 		0746443A2C44BF33005B151A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0746443B2C44BF33005B151A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		074644402C44C123005B151A /* Streamify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Streamify.entitlements; sourceTree = "<group>"; };
+		074644412C44D2BF005B151A /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		074644432C44D33D005B151A /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		074644452C44D4E4005B151A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		074644472C44D6E5005B151A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		074644492C44D874005B151A /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		0746444E2C44DCE7005B151A /* SettingsSubTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubTabs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +97,9 @@
 			children = (
 				0746440D2C44BE65005B151A /* HomeModel.swift */,
 				0746440E2C44BE65005B151A /* HomeView.swift */,
+				074644432C44D33D005B151A /* PlaylistView.swift */,
+				0746444C2C44D91B005B151A /* Video */,
+				0746444B2C44D90F005B151A /* Search */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -125,8 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				074644182C44BE65005B151A /* Deletion */,
-				074644192C44BE65005B151A /* AccountModel.swift */,
-				0746441A2C44BE65005B151A /* AccountView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -134,9 +143,10 @@
 		0746441E2C44BE65005B151A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0746441B2C44BE65005B151A /* Account */,
 				0746441C2C44BE65005B151A /* SettingsModel.swift */,
 				0746441D2C44BE65005B151A /* SettingsView.swift */,
+				0746444E2C44DCE7005B151A /* SettingsSubTabs.swift */,
+				0746441B2C44BE65005B151A /* Account */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -170,6 +180,24 @@
 				074644392C44BF33005B151A /* Preview Content */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		0746444B2C44D90F005B151A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				074644452C44D4E4005B151A /* SearchBar.swift */,
+				074644492C44D874005B151A /* SearchModel.swift */,
+				074644472C44D6E5005B151A /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		0746444C2C44D91B005B151A /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				074644412C44D2BF005B151A /* VideoModel.swift */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,10 +270,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				074644312C44BE65005B151A /* AccountModel.swift in Sources */,
+				074644482C44D6E5005B151A /* SearchView.swift in Sources */,
 				0746442D2C44BE65005B151A /* OnboardModel.swift in Sources */,
-				074644322C44BE65005B151A /* AccountView.swift in Sources */,
+				0746444A2C44D874005B151A /* SearchModel.swift in Sources */,
+				0746444F2C44DCE7005B151A /* SettingsSubTabs.swift in Sources */,
+				074644422C44D2BF005B151A /* VideoModel.swift in Sources */,
 				074644292C44BE65005B151A /* HomeModel.swift in Sources */,
+				074644462C44D4E4005B151A /* SearchBar.swift in Sources */,
 				0746443F2C44BF33005B151A /* Constants.swift in Sources */,
 				0746442F2C44BE65005B151A /* DeletionModel.swift in Sources */,
 				074644302C44BE65005B151A /* DeletionView.swift in Sources */,
@@ -256,6 +287,7 @@
 				0746442E2C44BE65005B151A /* OnboardView.swift in Sources */,
 				0746442A2C44BE65005B151A /* HomeView.swift in Sources */,
 				074643F52C44BD0C005B151A /* StreamifyApp.swift in Sources */,
+				074644442C44D33D005B151A /* PlaylistView.swift in Sources */,
 				074644342C44BE65005B151A /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

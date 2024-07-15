@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Solis
+//  Streamify
 //
-//  Created by Rayan Waked on 7/1/24.
+//  Created by Omar Waked on 7/14/24.
 //
 
 // MARK: - Import
@@ -40,7 +40,10 @@ private extension ContentView {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-
+            YouTubeSearchView()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")

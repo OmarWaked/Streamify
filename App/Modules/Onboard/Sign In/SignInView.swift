@@ -1,8 +1,8 @@
 //
 //  SignInView.swift
-//  Solis
+//  Streamify
 //
-//  Created by Rayan Waked on 7/12/24.
+//  Created by Omar Waked on 7/14/24.
 //
 
 // MARK: - Import

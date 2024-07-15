@@ -1,8 +1,8 @@
 //
 //  HomeView.swift
-//  App
+//  Streamify
 //
-//  Created by Rayan Waked on 7/13/24.
+//  Created by Omar Waked on 7/14/24.
 //
 
 // MARK: - Import
@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - View
 struct HomeView: View {
     @EnvironmentObject var signInViewModel: SignInViewModel
-    
+
     var body: some View {
         VStack {
             content
@@ -25,11 +25,8 @@ private extension HomeView {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text(getGreeting(for: signInViewModel.userName))
-                        .font(.largeTitle)
-                        .bold()
-                        .padding()
-                }
+                    
+                }.navigationTitle(getGreeting(for: signInViewModel.userName))
             }
         }
     }
