@@ -8,17 +8,60 @@
 
 /* Begin PBXBuildFile section */
 		074643F52C44BD0C005B151A /* StreamifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074643F42C44BD0C005B151A /* StreamifyApp.swift */; };
-		074643F72C44BD0C005B151A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074643F62C44BD0C005B151A /* ContentView.swift */; };
-		074643F92C44BD0D005B151A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074643F82C44BD0D005B151A /* Assets.xcassets */; };
-		074643FC2C44BD0D005B151A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074643FB2C44BD0D005B151A /* Preview Assets.xcassets */; };
+		074644212C44BE65005B151A /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644022C44BE65005B151A /* NoteDetailView.swift */; };
+		074644222C44BE65005B151A /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644032C44BE65005B151A /* NotesModel.swift */; };
+		074644232C44BE65005B151A /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644042C44BE65005B151A /* NotesView.swift */; };
+		074644242C44BE65005B151A /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644062C44BE65005B151A /* TodoModel.swift */; };
+		074644252C44BE65005B151A /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644072C44BE65005B151A /* TodoView.swift */; };
+		074644262C44BE65005B151A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644092C44BE65005B151A /* SearchBar.swift */; };
+		074644272C44BE65005B151A /* CitizenshipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746440B2C44BE65005B151A /* CitizenshipModel.swift */; };
+		074644282C44BE65005B151A /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746440C2C44BE65005B151A /* CountryDetailView.swift */; };
+		074644292C44BE65005B151A /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746440D2C44BE65005B151A /* HomeModel.swift */; };
+		0746442A2C44BE65005B151A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746440E2C44BE65005B151A /* HomeView.swift */; };
+		0746442B2C44BE65005B151A /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644102C44BE65005B151A /* SignInModel.swift */; };
+		0746442C2C44BE65005B151A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644112C44BE65005B151A /* SignInView.swift */; };
+		0746442D2C44BE65005B151A /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644132C44BE65005B151A /* OnboardModel.swift */; };
+		0746442E2C44BE65005B151A /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644142C44BE65005B151A /* OnboardView.swift */; };
+		0746442F2C44BE65005B151A /* DeletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644162C44BE65005B151A /* DeletionModel.swift */; };
+		074644302C44BE65005B151A /* DeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644172C44BE65005B151A /* DeletionView.swift */; };
+		074644312C44BE65005B151A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074644192C44BE65005B151A /* AccountModel.swift */; };
+		074644322C44BE65005B151A /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746441A2C44BE65005B151A /* AccountView.swift */; };
+		074644332C44BE65005B151A /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746441C2C44BE65005B151A /* SettingsModel.swift */; };
+		074644342C44BE65005B151A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746441D2C44BE65005B151A /* SettingsView.swift */; };
+		074644352C44BE65005B151A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746441F2C44BE65005B151A /* ContentView.swift */; };
+		0746443D2C44BF33005B151A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074644382C44BF33005B151A /* Preview Assets.xcassets */; };
+		0746443E2C44BF33005B151A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0746443A2C44BF33005B151A /* Assets.xcassets */; };
+		0746443F2C44BF33005B151A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746443B2C44BF33005B151A /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		074643F12C44BD0C005B151A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		074643F42C44BD0C005B151A /* StreamifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyApp.swift; sourceTree = "<group>"; };
-		074643F62C44BD0C005B151A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		074643F82C44BD0D005B151A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		074643FB2C44BD0D005B151A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		074644022C44BE65005B151A /* NoteDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
+		074644032C44BE65005B151A /* NotesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesModel.swift; sourceTree = "<group>"; };
+		074644042C44BE65005B151A /* NotesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		074644062C44BE65005B151A /* TodoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
+		074644072C44BE65005B151A /* TodoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
+		074644092C44BE65005B151A /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		0746440B2C44BE65005B151A /* CitizenshipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitizenshipModel.swift; sourceTree = "<group>"; };
+		0746440C2C44BE65005B151A /* CountryDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
+		0746440D2C44BE65005B151A /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		0746440E2C44BE65005B151A /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		074644102C44BE65005B151A /* SignInModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
+		074644112C44BE65005B151A /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		074644132C44BE65005B151A /* OnboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardModel.swift; sourceTree = "<group>"; };
+		074644142C44BE65005B151A /* OnboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
+		074644162C44BE65005B151A /* DeletionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletionModel.swift; sourceTree = "<group>"; };
+		074644172C44BE65005B151A /* DeletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletionView.swift; sourceTree = "<group>"; };
+		074644192C44BE65005B151A /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		0746441A2C44BE65005B151A /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		0746441C2C44BE65005B151A /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		0746441D2C44BE65005B151A /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0746441F2C44BE65005B151A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		074644382C44BF33005B151A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0746443A2C44BF33005B151A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0746443B2C44BF33005B151A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		074644402C44C123005B151A /* Streamify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Streamify.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +78,8 @@
 		074643E82C44BD0C005B151A = {
 			isa = PBXGroup;
 			children = (
-				074643F32C44BD0C005B151A /* Streamify */,
+				074644402C44C123005B151A /* Streamify.entitlements */,
+				074643F32C44BD0C005B151A /* App */,
 				074643F22C44BD0C005B151A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,23 +92,132 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		074643F32C44BD0C005B151A /* Streamify */ = {
+		074643F32C44BD0C005B151A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				074644202C44BE65005B151A /* Modules */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		074644052C44BE65005B151A /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				074644022C44BE65005B151A /* NoteDetailView.swift */,
+				074644032C44BE65005B151A /* NotesModel.swift */,
+				074644042C44BE65005B151A /* NotesView.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		074644082C44BE65005B151A /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				074644062C44BE65005B151A /* TodoModel.swift */,
+				074644072C44BE65005B151A /* TodoView.swift */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
+		0746440A2C44BE65005B151A /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				074644052C44BE65005B151A /* Notes */,
+				074644082C44BE65005B151A /* Todo */,
+				074644092C44BE65005B151A /* SearchBar.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0746440F2C44BE65005B151A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0746440B2C44BE65005B151A /* CitizenshipModel.swift */,
+				0746440C2C44BE65005B151A /* CountryDetailView.swift */,
+				0746440D2C44BE65005B151A /* HomeModel.swift */,
+				0746440E2C44BE65005B151A /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		074644122C44BE65005B151A /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				074644102C44BE65005B151A /* SignInModel.swift */,
+				074644112C44BE65005B151A /* SignInView.swift */,
+			);
+			path = "Sign In";
+			sourceTree = "<group>";
+		};
+		074644152C44BE65005B151A /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				074644122C44BE65005B151A /* Sign In */,
+				074644132C44BE65005B151A /* OnboardModel.swift */,
+				074644142C44BE65005B151A /* OnboardView.swift */,
+			);
+			path = Onboard;
+			sourceTree = "<group>";
+		};
+		074644182C44BE65005B151A /* Deletion */ = {
+			isa = PBXGroup;
+			children = (
+				074644162C44BE65005B151A /* DeletionModel.swift */,
+				074644172C44BE65005B151A /* DeletionView.swift */,
+			);
+			path = Deletion;
+			sourceTree = "<group>";
+		};
+		0746441B2C44BE65005B151A /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				074644182C44BE65005B151A /* Deletion */,
+				074644192C44BE65005B151A /* AccountModel.swift */,
+				0746441A2C44BE65005B151A /* AccountView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		0746441E2C44BE65005B151A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0746441B2C44BE65005B151A /* Account */,
+				0746441C2C44BE65005B151A /* SettingsModel.swift */,
+				0746441D2C44BE65005B151A /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		074644202C44BE65005B151A /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				074643F42C44BD0C005B151A /* StreamifyApp.swift */,
-				074643F62C44BD0C005B151A /* ContentView.swift */,
-				074643F82C44BD0D005B151A /* Assets.xcassets */,
-				074643FA2C44BD0D005B151A /* Preview Content */,
+				0746441F2C44BE65005B151A /* ContentView.swift */,
+				074644152C44BE65005B151A /* Onboard */,
+				0746440F2C44BE65005B151A /* Home */,
+				0746440A2C44BE65005B151A /* Features */,
+				0746441E2C44BE65005B151A /* Settings */,
+				0746443C2C44BF33005B151A /* Assets */,
 			);
-			path = Streamify;
+			path = Modules;
 			sourceTree = "<group>";
 		};
-		074643FA2C44BD0D005B151A /* Preview Content */ = {
+		074644392C44BF33005B151A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				074643FB2C44BD0D005B151A /* Preview Assets.xcassets */,
+				074644382C44BF33005B151A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0746443C2C44BF33005B151A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0746443B2C44BF33005B151A /* Constants.swift */,
+				0746443A2C44BF33005B151A /* Assets.xcassets */,
+				074644392C44BF33005B151A /* Preview Content */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +278,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				074643FC2C44BD0D005B151A /* Preview Assets.xcassets in Resources */,
-				074643F92C44BD0D005B151A /* Assets.xcassets in Resources */,
+				0746443D2C44BF33005B151A /* Preview Assets.xcassets in Resources */,
+				0746443E2C44BF33005B151A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +290,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				074643F72C44BD0C005B151A /* ContentView.swift in Sources */,
+				074644312C44BE65005B151A /* AccountModel.swift in Sources */,
+				074644212C44BE65005B151A /* NoteDetailView.swift in Sources */,
+				0746442D2C44BE65005B151A /* OnboardModel.swift in Sources */,
+				074644222C44BE65005B151A /* NotesModel.swift in Sources */,
+				074644322C44BE65005B151A /* AccountView.swift in Sources */,
+				074644292C44BE65005B151A /* HomeModel.swift in Sources */,
+				0746443F2C44BF33005B151A /* Constants.swift in Sources */,
+				074644252C44BE65005B151A /* TodoView.swift in Sources */,
+				0746442F2C44BE65005B151A /* DeletionModel.swift in Sources */,
+				074644302C44BE65005B151A /* DeletionView.swift in Sources */,
+				074644232C44BE65005B151A /* NotesView.swift in Sources */,
+				074644282C44BE65005B151A /* CountryDetailView.swift in Sources */,
+				074644242C44BE65005B151A /* TodoModel.swift in Sources */,
+				074644332C44BE65005B151A /* SettingsModel.swift in Sources */,
+				0746442B2C44BE65005B151A /* SignInModel.swift in Sources */,
+				0746442C2C44BE65005B151A /* SignInView.swift in Sources */,
+				074644272C44BE65005B151A /* CitizenshipModel.swift in Sources */,
+				074644262C44BE65005B151A /* SearchBar.swift in Sources */,
+				074644352C44BE65005B151A /* ContentView.swift in Sources */,
+				0746442E2C44BE65005B151A /* OnboardView.swift in Sources */,
+				0746442A2C44BE65005B151A /* HomeView.swift in Sources */,
 				074643F52C44BD0C005B151A /* StreamifyApp.swift in Sources */,
+				074644342C44BE65005B151A /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,17 +443,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Streamify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Streamify/Preview Content\"";
 				DEVELOPMENT_TEAM = Q5F3QY59N9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Streamify;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -287,6 +463,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.waked.Streamify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -298,17 +478,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Streamify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Streamify/Preview Content\"";
 				DEVELOPMENT_TEAM = Q5F3QY59N9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Streamify;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,6 +498,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.waked.Streamify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

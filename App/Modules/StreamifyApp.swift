@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct StreamifyApp: App {
+    @StateObject private var signInViewModel = SignInViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(signInViewModel)
         }
     }
 }
