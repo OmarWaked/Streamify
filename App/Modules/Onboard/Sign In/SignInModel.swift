@@ -99,19 +99,26 @@ class SignInViewModel: ObservableObject {
         }
     }
     
-    func signIn(with authorization: ASAuthorization) {
-        handleSuccessfulLogin(with: authorization)
-        isSignedIn = true
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            userIdentifier = appleIDCredential.user
-            print("Sign in successful. User Identifier: \(userIdentifier ?? "Not available")")
-            fetchUserData(userIdentifier: appleIDCredential.user) { [weak self] record in
-                DispatchQueue.main.async {
-                    self?.userName = record?["givenName"] as? String
-                    print("userName set to: \(self?.userName ?? "nil")")
+    func signIn(with authorization: ASAuthorization?) {
+        if let authorization = authorization {
+            handleSuccessfulLogin(with: authorization)
+            if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+                userIdentifier = appleIDCredential.user
+                print("Sign in successful. User Identifier: \(userIdentifier ?? "Not available")")
+                fetchUserData(userIdentifier: appleIDCredential.user) { [weak self] record in
+                    DispatchQueue.main.async {
+                        self?.userName = record?["givenName"] as? String
+                        print("userName set to: \(self?.userName ?? "nil")")
+                    }
                 }
             }
+        } else {
+            // Guest sign in
+            userIdentifier = "guest_\(UUID().uuidString)"
+            userName = "Guest User"
+            print("Guest sign in successful. User Identifier: \(userIdentifier ?? "Not available")")
         }
+        isSignedIn = true
     }
     
     func signOut() {
