@@ -235,10 +235,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For support and questions:
 - **Issues**: Create an issue in the GitHub repository
 - **Documentation**: Check the inline code documentation
-- **Community**: Join our development community
 
 ---
-
-**Built with ❤️ using SwiftUI and modern iOS development practices**
 
 *Last updated: August 2024*
