@@ -5,38 +5,29 @@
 //  Created by Omar Waked on 7/14/24.
 //
 
-// MARK: - Import
 import SwiftUI
 
-// MARK: - View
+// MARK: - Main Content View
 struct ContentView: View {
     @EnvironmentObject var signInViewModel: SignInViewModel
     @StateObject private var videoManager = VideoManager()
     
     var body: some View {
-        VStack {
-            viewDelegate
-        }
-        .onChange(of: signInViewModel.isSignedIn) {_, newValue in
-            print("ContentView: isSignedIn changed to \(newValue)")
+        Group {
+            if signInViewModel.isSignedIn {
+                MainTabView()
+            } else {
+                OnboardView()
+                    .environmentObject(signInViewModel)
+            }
         }
         .environmentObject(videoManager)
     }
 }
 
-// MARK: - Extension
-private extension ContentView {
-    var viewDelegate: some View {
-        VStack {
-            if signInViewModel.isSignedIn {
-                content
-            } else {
-                onboard
-            }
-        }
-    }
-    
-    var content: some View {
+// MARK: - Main Tab View
+struct MainTabView: View {
+    var body: some View {
         TabView {
             HomeView()
                 .tabItem {
@@ -60,11 +51,6 @@ private extension ContentView {
         }
         .accentColor(.blue)
     }
-    
-    var onboard: some View {
-        OnboardView()
-            .environmentObject(signInViewModel)
-    }
 }
 
 // MARK: - Library View
@@ -74,55 +60,66 @@ struct LibraryView: View {
     var body: some View {
         NavigationView {
             List {
-                Section("Recently Played") {
-                    if videoManager.recentlyPlayed.isEmpty {
-                        Text("No recently played videos")
-                            .foregroundColor(.secondary)
-                            .italic()
-                    } else {
-                        ForEach(videoManager.recentlyPlayed.prefix(10)) { video in
-                            VideoListItemView(video: video) {
-                                videoManager.playVideo(video)
-                            }
-                        }
-                    }
-                }
-                
-                Section("Favorites") {
-                    if videoManager.favorites.isEmpty {
-                        Text("No favorite videos")
-                            .foregroundColor(.secondary)
-                            .italic()
-                    } else {
-                        ForEach(videoManager.favorites) { video in
-                            VideoListItemView(video: video) {
-                                videoManager.playVideo(video)
-                            }
-                        }
-                    }
-                }
-                
-                Section("Playlists") {
-                    if let currentPlaylist = videoManager.currentPlaylist {
-                        NavigationLink(destination: PlaylistDetailView(playlist: currentPlaylist)) {
-                            HStack {
-                                Image(systemName: "play.square.stack")
-                                    .foregroundColor(.blue)
-                                Text(currentPlaylist.name)
-                                Spacer()
-                                Text("\(currentPlaylist.videos.count) videos")
-                                    .foregroundColor(.secondary)
-                                    .font(.caption)
-                            }
-                        }
-                    } else {
-                        Text("No playlists")
-                            .foregroundColor(.secondary)
-                            .italic()
+                recentlyPlayedSection
+                favoritesSection
+                playlistsSection
+            }
+            .navigationTitle("Library")
+        }
+    }
+}
+
+// MARK: - Library View Extensions
+private extension LibraryView {
+    var recentlyPlayedSection: some View {
+        Section("Recently Played") {
+            if videoManager.recentlyPlayed.isEmpty {
+                EmptyStateView(
+                    icon: "play.square.stack",
+                    title: "No Recently Played",
+                    message: "Videos you watch will appear here"
+                )
+            } else {
+                ForEach(videoManager.recentlyPlayed.prefix(10)) { video in
+                    VideoListItemView(video: video) {
+                        videoManager.playVideo(video)
                     }
                 }
             }
-            .navigationTitle("Library")
+        }
+    }
+    
+    var favoritesSection: some View {
+        Section("Favorites") {
+            if videoManager.favorites.isEmpty {
+                EmptyStateView(
+                    icon: "heart",
+                    title: "No Favorites",
+                    message: "Tap the heart icon to save videos"
+                )
+            } else {
+                ForEach(videoManager.favorites) { video in
+                    VideoListItemView(video: video) {
+                        videoManager.playVideo(video)
+                    }
+                }
+            }
+        }
+    }
+    
+    var playlistsSection: some View {
+        Section("Playlists") {
+            if let currentPlaylist = videoManager.currentPlaylist {
+                NavigationLink(destination: PlaylistDetailView(playlist: currentPlaylist)) {
+                    PlaylistRowView(playlist: currentPlaylist)
+                }
+            } else {
+                EmptyStateView(
+                    icon: "play.square.stack.3d",
+                    title: "No Playlists",
+                    message: "Create playlists to organize your content"
+                )
+            }
         }
     }
 }
@@ -139,6 +136,65 @@ struct PlaylistDetailView: View {
         }
         .navigationTitle(playlist.name)
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+// MARK: - Playlist Row View
+struct PlaylistRowView: View {
+    let playlist: Playlist
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "play.square.stack")
+                .foregroundColor(.blue)
+                .font(.title3)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(playlist.name)
+                    .font(.body)
+                    .fontWeight(.medium)
+                
+                Text("\(playlist.videos.count) videos")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .padding(.vertical, 4)
+    }
+}
+
+// MARK: - Empty State View
+struct EmptyStateView: View {
+    let icon: String
+    let title: String
+    let message: String
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 32))
+                .foregroundColor(.secondary)
+            
+            VStack(spacing: 4) {
+                Text(title)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.primary)
+                
+                Text(message)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 20)
     }
 }
 

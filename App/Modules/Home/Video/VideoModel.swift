@@ -5,13 +5,68 @@
 //  Created by Omar Waked on 7/14/24.
 //
 
-import Foundation
 import SwiftUI
 import AVKit
 import AVFoundation
 
-// MARK: - Video Models
-struct Video: Identifiable, Codable {
+// MARK: - Video Manager
+class VideoManager: ObservableObject {
+    @Published var recentlyPlayed: [Video] = []
+    @Published var favorites: [Video] = []
+    @Published var currentPlaylist: Playlist?
+    
+    private var player: AVPlayer?
+    
+    init() {
+        loadMockData()
+    }
+    
+    func playVideo(_ video: Video) {
+        addToRecentlyPlayed(video)
+        
+        // Create player with video URL
+        if let url = URL(string: video.thumbnailURL) {
+            let playerItem = AVPlayerItem(url: url)
+            player = AVPlayer(playerItem: playerItem)
+            player?.play()
+        }
+    }
+    
+    func toggleFavorite(_ video: Video) {
+        if let index = favorites.firstIndex(where: { $0.id == video.id }) {
+            favorites.remove(at: index)
+        } else {
+            favorites.append(video)
+        }
+    }
+    
+    func isFavorite(_ video: Video) -> Bool {
+        favorites.contains { $0.id == video.id }
+    }
+    
+    private func addToRecentlyPlayed(_ video: Video) {
+        // Remove if already exists
+        recentlyPlayed.removeAll { $0.id == video.id }
+        
+        // Add to beginning
+        recentlyPlayed.insert(video, at: 0)
+        
+        // Keep only last 20 videos
+        if recentlyPlayed.count > 20 {
+            recentlyPlayed = Array(recentlyPlayed.prefix(20))
+        }
+    }
+    
+    private func loadMockData() {
+        // Load mock data for development
+        recentlyPlayed = MockData.recentlyPlayed
+        favorites = MockData.favorites
+        currentPlaylist = MockData.samplePlaylist
+    }
+}
+
+// MARK: - Video Model
+struct Video: Identifiable, Codable, Equatable {
     let id: String
     let title: String
     let description: String
@@ -20,218 +75,151 @@ struct Video: Identifiable, Codable {
     let channel: String?
     let viewCount: String?
     let publishedAt: String?
-    let videoURL: String?
     
-    init(id: String, title: String, description: String, thumbnailURL: String, duration: String? = nil, channel: String? = nil, viewCount: String? = nil, publishedAt: String? = nil, videoURL: String? = nil) {
-        self.id = id
-        self.title = title
-        self.description = description
-        self.thumbnailURL = thumbnailURL
-        self.duration = duration
-        self.channel = channel
-        self.viewCount = viewCount
-        self.publishedAt = publishedAt
-        self.videoURL = videoURL
+    // Computed properties
+    var formattedDuration: String {
+        duration ?? "Unknown"
+    }
+    
+    var formattedViewCount: String {
+        viewCount ?? "0 views"
+    }
+    
+    var formattedPublishedDate: String {
+        publishedAt ?? "Unknown date"
+    }
+    
+    var channelName: String {
+        channel ?? "Unknown Channel"
     }
 }
 
+// MARK: - Playlist Model
 struct Playlist: Identifiable, Codable {
-    let id: UUID
-    var name: String
-    var videos: [Video]
-    var isPublic: Bool
-    var createdAt: Date
+    let id: String
+    let name: String
+    let description: String
+    let videos: [Video]
+    let thumbnailURL: String?
+    let createdAt: Date
     
-    init(id: UUID = UUID(), name: String, videos: [Video] = [], isPublic: Bool = true, createdAt: Date = Date()) {
-        self.id = id
-        self.name = name
-        self.videos = videos
-        self.isPublic = isPublic
-        self.createdAt = createdAt
+    var videoCount: Int {
+        videos.count
+    }
+    
+    var formattedVideoCount: String {
+        "\(videoCount) video\(videoCount == 1 ? "" : "s")"
     }
 }
 
-// MARK: - Video Player View
-struct VideoPlayerView: View {
+// MARK: - Video Grid Item View
+struct VideoGridItemView: View {
     let video: Video
-    @State private var player: AVPlayer?
-    @State private var isPlaying = false
-    @State private var currentTime: Double = 0
-    @State private var duration: Double = 0
-    @State private var showControls = true
+    let onTap: () -> Void
     
     var body: some View {
+        Button(action: onTap) {
+            VStack(alignment: .leading, spacing: 12) {
+                thumbnailSection
+                contentSection
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
+        .background(Color(.systemBackground))
+        .cornerRadius(16)
+        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
+    }
+}
+
+// MARK: - Video Grid Item Extensions
+private extension VideoGridItemView {
+    var thumbnailSection: some View {
         ZStack {
-            if let player = player {
-                VideoPlayer(player: player)
-                    .aspectRatio(16/9, contentMode: .fit)
-                    .onTapGesture {
-                        withAnimation {
-                            showControls.toggle()
-                        }
-                    }
-                
-                if showControls {
-                    VStack {
-                        Spacer()
-                        VideoControlsView(
-                            player: player,
-                            isPlaying: $isPlaying,
-                            currentTime: $currentTime,
-                            duration: $duration
-                        )
-                        .background(Color.black.opacity(0.3))
-                    }
-                }
-            } else {
-                VideoPlaceholderView(video: video)
-            }
-        }
-        .onAppear {
-            setupPlayer()
-        }
-        .onDisappear {
-            player?.pause()
-            player = nil
-        }
-    }
-    
-    private func setupPlayer() {
-        // For demo purposes, we'll use a sample video URL
-        // In production, you'd extract the actual video URL from the video object
-        let sampleURL = URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!
-        player = AVPlayer(url: sampleURL)
-        
-        // Add time observer
-        let interval = CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        player?.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
-            currentTime = time.seconds
-        }
-        
-        // Get duration
-        player?.currentItem?.asset.loadValuesAsynchronously(forKeys: ["duration"]) {
-            DispatchQueue.main.async {
-                if let duration = self.player?.currentItem?.asset.duration {
-                    self.duration = CMTimeGetSeconds(duration)
-                }
-            }
-        }
-    }
-}
-
-// MARK: - Video Controls
-struct VideoControlsView: View {
-    let player: AVPlayer
-    @Binding var isPlaying: Bool
-    @Binding var currentTime: Double
-    @Binding var duration: Double
-    
-    var body: some View {
-        VStack(spacing: 8) {
-            // Progress bar
-            ProgressView(value: currentTime, total: duration)
-                .progressViewStyle(LinearProgressViewStyle(tint: .white))
-                .padding(.horizontal)
-            
-            HStack {
-                // Play/Pause button
-                Button(action: togglePlayPause) {
-                    Image(systemName: isPlaying ? "pause.fill" : "play.fill")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                }
-                
-                // Time labels
-                Text(formatTime(currentTime))
-                    .foregroundColor(.white)
-                    .font(.caption)
-                
-                Spacer()
-                
-                Text(formatTime(duration))
-                    .foregroundColor(.white)
-                    .font(.caption)
-                
-                // Fullscreen button
-                Button(action: toggleFullscreen) {
-                    Image(systemName: "arrow.up.left.and.arrow.down.right")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                }
-            }
-            .padding(.horizontal)
-        }
-        .padding(.bottom)
-    }
-    
-    private func togglePlayPause() {
-        if isPlaying {
-            player.pause()
-        } else {
-            player.play()
-        }
-        isPlaying.toggle()
-    }
-    
-    private func toggleFullscreen() {
-        // Implement fullscreen functionality
-    }
-    
-    private func formatTime(_ time: Double) -> String {
-        let minutes = Int(time) / 60
-        let seconds = Int(time) % 60
-        return String(format: "%d:%02d", minutes, seconds)
-    }
-}
-
-// MARK: - Video Placeholder
-struct VideoPlaceholderView: View {
-    let video: Video
-    
-    var body: some View {
-        VStack {
             AsyncImage(url: URL(string: video.thumbnailURL)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
             } placeholder: {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.3))
-                    .overlay(
-                        Image(systemName: "play.circle.fill")
-                            .font(.system(size: 60))
-                            .foregroundColor(.white)
-                    )
+                placeholderView
             }
-            .frame(height: 200)
+            .frame(height: 120)
             .clipped()
+            .cornerRadius(12)
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text(video.title)
-                    .font(.headline)
-                    .lineLimit(2)
-                
-                if let channel = video.channel {
-                    Text(channel)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                
-                if let viewCount = video.viewCount {
-                    Text(viewCount)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-            }
-            .padding()
+            playButtonOverlay
         }
-        .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(radius: 5)
+    }
+    
+    var placeholderView: some View {
+        Rectangle()
+            .fill(Color.gray.opacity(0.3))
+            .overlay(
+                Image(systemName: "play.circle.fill")
+                    .font(.system(size: 32))
+                    .foregroundColor(.white)
+            )
+    }
+    
+    var playButtonOverlay: some View {
+        Circle()
+            .fill(Color.black.opacity(0.6))
+            .frame(width: 40, height: 40)
+            .overlay(
+                Image(systemName: "play.fill")
+                    .font(.system(size: 16))
+                    .foregroundColor(.white)
+            )
+            .opacity(0.8)
+    }
+    
+    var contentSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            titleSection
+            channelSection
+            metadataSection
+        }
+        .padding(.horizontal, 4)
+    }
+    
+    var titleSection: some View {
+        Text(video.title)
+            .font(.subheadline)
+            .fontWeight(.medium)
+            .lineLimit(2)
+            .foregroundColor(.primary)
+            .multilineTextAlignment(.leading)
+    }
+    
+    var channelSection: some View {
+        Text(video.channelName)
+            .font(.caption)
+            .foregroundColor(.secondary)
+            .lineLimit(1)
+    }
+    
+    var metadataSection: some View {
+        HStack(spacing: 12) {
+            if let viewCount = video.viewCount {
+                Text(viewCount)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+            
+            if let publishedAt = video.publishedAt {
+                Text("•")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                Text(publishedAt)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
     }
 }
 
-// MARK: - Video List Item
+// MARK: - Video List Item View
 struct VideoListItemView: View {
     let video: Video
     let onTap: () -> Void
@@ -239,90 +227,10 @@ struct VideoListItemView: View {
     var body: some View {
         Button(action: onTap) {
             HStack(spacing: 16) {
-                // Thumbnail
-                ZStack {
-                    AsyncImage(url: URL(string: video.thumbnailURL)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    } placeholder: {
-                        Rectangle()
-                            .fill(Color.gray.opacity(0.3))
-                            .overlay(
-                                Image(systemName: "play.circle.fill")
-                                    .font(.system(size: 24))
-                                    .foregroundColor(.white)
-                            )
-                    }
-                    .frame(width: 120, height: 72)
-                    .clipped()
-                    .cornerRadius(10)
-                    
-                    // Play button overlay
-                    Circle()
-                        .fill(Color.black.opacity(0.6))
-                        .frame(width: 32, height: 32)
-                        .overlay(
-                            Image(systemName: "play.fill")
-                                .font(.system(size: 14))
-                                .foregroundColor(.white)
-                        )
-                        .opacity(0.8)
-                }
-                
-                // Video info
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(video.title)
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .lineLimit(2)
-                        .foregroundColor(.primary)
-                        .multilineTextAlignment(.leading)
-                    
-                    if let channel = video.channel {
-                        Text(channel)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .lineLimit(1)
-                    }
-                    
-                    // Video metadata
-                    HStack(spacing: 12) {
-                        if let viewCount = video.viewCount {
-                            Text(viewCount)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        if let publishedAt = video.publishedAt {
-                            Text("•")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                            Text(publishedAt)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        if let duration = video.duration {
-                            Text("•")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                            Text(duration)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        Spacer()
-                    }
-                }
-                
+                thumbnailSection
+                contentSection
                 Spacer()
-                
-                // Chevron
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.secondary)
-                    .font(.caption)
-                    .fontWeight(.medium)
+                chevronSection
             }
             .padding(.vertical, 12)
             .padding(.horizontal, 16)
@@ -336,121 +244,168 @@ struct VideoListItemView: View {
     }
 }
 
-// MARK: - Video Grid Item
-struct VideoGridItemView: View {
-    let video: Video
-    let onTap: () -> Void
-    
-    var body: some View {
-        Button(action: onTap) {
-            VStack(alignment: .leading, spacing: 12) {
-                // Thumbnail with play button overlay
-                ZStack {
-                    AsyncImage(url: URL(string: video.thumbnailURL)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    } placeholder: {
-                        Rectangle()
-                            .fill(Color.gray.opacity(0.3))
-                            .overlay(
-                                Image(systemName: "play.circle.fill")
-                                    .font(.system(size: 32))
-                                    .foregroundColor(.white)
-                            )
-                    }
-                    .frame(height: 120)
-                    .clipped()
-                    .cornerRadius(12)
-                    
-                    // Play button overlay
-                    Circle()
-                        .fill(Color.black.opacity(0.6))
-                        .frame(width: 40, height: 40)
-                        .overlay(
-                            Image(systemName: "play.fill")
-                                .font(.system(size: 16))
-                                .foregroundColor(.white)
-                        )
-                        .opacity(0.8)
-                }
-                
-                // Video info
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(video.title)
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .lineLimit(2)
-                        .foregroundColor(.primary)
-                        .multilineTextAlignment(.leading)
-                    
-                    if let channel = video.channel {
-                        Text(channel)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .lineLimit(1)
-                    }
-                    
-                    // Video metadata
-                    HStack(spacing: 12) {
-                        if let viewCount = video.viewCount {
-                            Text(viewCount)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        if let publishedAt = video.publishedAt {
-                            Text("•")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                            Text(publishedAt)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        Spacer()
-                    }
-                }
-                .padding(.horizontal, 4)
+// MARK: - Video List Item Extensions
+private extension VideoListItemView {
+    var thumbnailSection: some View {
+        ZStack {
+            AsyncImage(url: URL(string: video.thumbnailURL)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
+                placeholderView
             }
+            .frame(width: 120, height: 72)
+            .clipped()
+            .cornerRadius(10)
+            
+            playButtonOverlay
         }
-        .buttonStyle(PlainButtonStyle())
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
+    }
+    
+    var placeholderView: some View {
+        Rectangle()
+            .fill(Color.gray.opacity(0.3))
+            .overlay(
+                Image(systemName: "play.circle.fill")
+                    .font(.system(size: 24))
+                    .foregroundColor(.white)
+            )
+    }
+    
+    var playButtonOverlay: some View {
+        Circle()
+            .fill(Color.black.opacity(0.6))
+            .frame(width: 32, height: 32)
+            .overlay(
+                Image(systemName: "play.fill")
+                    .font(.system(size: 14))
+                    .foregroundColor(.white)
+            )
+            .opacity(0.8)
+    }
+    
+    var contentSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            titleSection
+            channelSection
+            metadataSection
+        }
+    }
+    
+    var titleSection: some View {
+        Text(video.title)
+            .font(.subheadline)
+            .fontWeight(.medium)
+            .lineLimit(2)
+            .foregroundColor(.primary)
+            .multilineTextAlignment(.leading)
+    }
+    
+    var channelSection: some View {
+        Text(video.channelName)
+            .font(.caption)
+            .foregroundColor(.secondary)
+            .lineLimit(1)
+    }
+    
+    var metadataSection: some View {
+        HStack(spacing: 12) {
+            if let viewCount = video.viewCount {
+                Text(viewCount)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+            
+            if let publishedAt = video.publishedAt {
+                Text("•")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                Text(publishedAt)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+            
+            if let duration = video.duration {
+                Text("•")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                Text(duration)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
+    }
+    
+    var chevronSection: some View {
+        Image(systemName: "chevron.right")
+            .foregroundColor(.secondary)
+            .font(.caption)
+            .fontWeight(.medium)
     }
 }
 
-// MARK: - Video Manager
-class VideoManager: ObservableObject {
-    @Published var currentVideo: Video?
-    @Published var isPlaying = false
-    @Published var currentPlaylist: Playlist?
-    @Published var recentlyPlayed: [Video] = []
-    @Published var favorites: [Video] = []
+// MARK: - Mock Data
+private enum MockData {
+    static let recentlyPlayed = [
+        Video(
+            id: "1",
+            title: "Amazing Music Performance Live",
+            description: "Incredible live performance that will blow your mind",
+            thumbnailURL: "https://picsum.photos/300/200?random=1",
+            duration: "4:32",
+            channel: "Music Channel",
+            viewCount: "2.1M views",
+            publishedAt: "1 day ago"
+        ),
+        Video(
+            id: "2",
+            title: "Epic Gaming Tournament Highlights",
+            description: "Best moments from the latest gaming tournament",
+            thumbnailURL: "https://picsum.photos/300/200?random=2",
+            duration: "15:45",
+            channel: "Gaming Pro",
+            viewCount: "1.8M views",
+            publishedAt: "3 days ago"
+        )
+    ]
     
-    func playVideo(_ video: Video) {
-        currentVideo = video
-        isPlaying = true
+    static let favorites = [
+        Video(
+            id: "3",
+            title: "Science Explained Simply",
+            description: "Complex scientific concepts made easy to understand",
+            thumbnailURL: "https://picsum.photos/300/200?random=3",
+            duration: "12:18",
+            channel: "Science Hub",
+            viewCount: "3.2M views",
+            publishedAt: "1 week ago"
+        )
+    ]
+    
+    static let samplePlaylist = Playlist(
+        id: "1",
+        name: "My Favorites",
+        description: "A collection of my favorite videos",
+        videos: recentlyPlayed + favorites,
+        thumbnailURL: "https://picsum.photos/300/200?random=10",
+        createdAt: Date()
+    )
+}
+
+// MARK: - Preview
+#Preview {
+    VStack(spacing: 20) {
+        VideoGridItemView(video: MockData.recentlyPlayed[0]) {
+            print("Grid item tapped")
+        }
         
-        // Add to recently played
-        if !recentlyPlayed.contains(where: { $0.id == video.id }) {
-            recentlyPlayed.insert(video, at: 0)
-            if recentlyPlayed.count > 50 {
-                recentlyPlayed = Array(recentlyPlayed.prefix(50))
-            }
+        VideoListItemView(video: MockData.recentlyPlayed[0]) {
+            print("List item tapped")
         }
     }
-    
-    func toggleFavorite(_ video: Video) {
-        if let index = favorites.firstIndex(where: { $0.id == video.id }) {
-            favorites.remove(at: index)
-        } else {
-            favorites.append(video)
-        }
-    }
-    
-    func isFavorite(_ video: Video) -> Bool {
-        favorites.contains(where: { $0.id == video.id })
-    }
+    .padding()
+    .background(Color(.systemGroupedBackground))
 }
